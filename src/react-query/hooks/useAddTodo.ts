@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Todo } from "./useTodos";
-import axios from "axios";
 import { CACHE_KEY_TODOS } from "../constants";
+import todoService, { Todo } from "../services/todoService";
 
 const useAddTodo = (onAdd: () => void) => {
     const queryClient = useQueryClient();
@@ -14,10 +13,7 @@ const useAddTodo = (onAdd: () => void) => {
     // defined in tanstack, just like query hook
     // args ( data obtained from backend, error object, data sent to backend, context of mutation )
     return useMutation<Todo, Error, Todo, AddTodoContext>({
-      mutationFn: (todo: Todo) =>
-        axios
-          .post<Todo>("https://jsonplaceholder.typicode.com/posts", todo)
-          .then((res) => res.data),
+      mutationFn: todoService.post,
   
       onMutate: (newTodo: Todo) => {
         // Set the context
