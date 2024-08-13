@@ -4,7 +4,7 @@ const TodoList = () => {
   // Query object; destructure for the "data" property
   const { data: todos, error, isLoading } = useTodos();
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p>Loading todos...</p>;
   if (error) return <p>{error.message}</p>;
 
   return (
