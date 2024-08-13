@@ -8,13 +8,18 @@ interface Post {
     userId: number;
   }
 
-const usePosts = () => {
+const usePosts = (userId: number | undefined) => {
     const getForms = () => 
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get('https://jsonplaceholder.typicode.com/posts', {params: {
+            userId
+        }})
         .then(res => res.data);
 
     return useQuery<Post[], Error>({
-        queryKey: ["forms"],
+        // Keys are defined in a hierarchical fashion (left = precedence)
+        // follows conventions of URL paths
+        // i.e. /users/4/posts
+        queryKey: userId ? ["users", userId, "posts"] : ["posts"],
         queryFn: getForms,
         staleTime: 1 * 60 * 1000 // 1m
     });

@@ -5,7 +5,6 @@ import TodoList from "./react-query/TodoList";
 function App() {
   return (
     <>
-      <TodoList />
       <PostList />
     </>
   );
