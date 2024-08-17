@@ -3,7 +3,10 @@ import TasksContext from "./tasks/tasksContexts";
 import useCounterStore from "./counter/store";
 
 const { tasks } = useContext(TasksContext);
-const { counter } = useCounterStore();
+const counter = useCounterStore((s) => s.counter);
+
+// when changes are recorded to the state, the component the state is within will re-render.
+console.log("Render navbar");
 
 const NavBar = () => {
   return (
