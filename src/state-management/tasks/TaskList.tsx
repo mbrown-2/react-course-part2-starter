@@ -1,4 +1,7 @@
-import useTasks from "./useTasks";
+import { useContext } from "react";
+import TasksContext from "./tasksContexts";
+
+const useTasks = () => useContext(TasksContext);
 
 export interface Task {
   id: number;
