@@ -1,5 +1,4 @@
-import { useReducer } from "react";
-import tasksReducer from "./reducers/tasksReducer";
+import useTasks from "./useTasks";
 
 export interface Task {
   id: number;
@@ -7,8 +6,8 @@ export interface Task {
 }
 
 const TaskList = () => {
-  // params: reducer function, initial state
-  const [tasks, dispatch] = useReducer(tasksReducer, []);
+  // Context hook for reaching to the tasksContext
+  const { tasks, dispatch } = useTasks();
 
   return (
     <>
