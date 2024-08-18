@@ -1,6 +1,6 @@
 import { useLocation, useParams, useSearchParams } from "react-router-dom";
 
-const UserDetailPage = () => {
+const UserDetail = () => {
   // Below: a tour through state hooks associated with react router.
 
   // Hook for extracting parameters from the url.
@@ -13,7 +13,7 @@ const UserDetailPage = () => {
   const location = useLocation();
   console.log(searchParams.get("this"));
   console.log(location.pathname);
-  return <p>User</p>;
+  return <p>User {params.id}</p>;
 };
 
-export default UserDetailPage;
+export default UserDetail;

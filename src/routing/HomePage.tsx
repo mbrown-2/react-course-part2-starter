@@ -11,7 +11,6 @@ const HomePage = () => {
         mollitia!
       </p>
       <Link to={"/users"}>Users</Link>
-      <a href="/users">Users</a>
     </>
   );
 };
